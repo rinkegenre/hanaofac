@@ -175,7 +175,7 @@ sap.ui.jsview("views.claimants", {
 
 		// bind table rows to /Persons based on the model defined in the init method of the controller
 		oTable.bindRows("/claimants");
-
+// x
 		return oTable;
 	},
 

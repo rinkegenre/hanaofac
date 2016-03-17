@@ -1,0 +1,55 @@
+PROCEDURE "_SYS_BIC"."s0009272344trial.thrinke.ofac.procedures::createClaimant"(
+		IN intab "_SYS_BIC"."s0009272344trial.thrinke.ofac.data::model.procedures.claimant", 
+		OUT outtab "_SYS_BIC"."s0009272344trial.thrinke.ofac.data::model.procedures.errors"
+	)
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER
+	DEFAULT SCHEMA _SYS_BIC
+AS
+BEGIN
+	DECLARE lv_key STRING;
+	DECLARE lv_LossNumber STRING;
+	DECLARE lv_LossStatus STRING;
+	DECLARE lv_ClaimantName STRING;
+	DECLARE lv_CompanyCode STRING;
+	DECLARE lv_BusinessArea STRING;
+	DECLARE lv_ChangedBy STRING;
+	DECLARE lv_ChangedOn TIMESTAMP;
+	DECLARE lv_ExportedOn TIMESTAMP;
+
+	SELECT LOSSNUMBER, 
+			LOSSSTATUS, 
+			CLAIMANTNAME, 
+			COMPANYCODE, 
+			BUSINESSAREA, 
+			CHANGEDBY, 
+			CURRENT_DATE, 
+			EXPORTEDON
+		INTO lv_LossNumber, 
+			lv_LossStatus, 
+			lv_ClaimantName, 
+			lv_CompanyCode, 
+			lv_BusinessArea, 
+			lv_ChangedBy, 
+			lv_ChangedOn, 
+			lv_ExportedOn
+		FROM :intab;
+
+/*
+    SELECT ClaimantName
+		INTO lv_ClaimantName
+		FROM :intab;
+*/		
+
+	IF (:lv_ClaimantName = '') THEN
+		outtab = SELECT 500 AS http_status_code, 
+					'empty name ' || lv_ClaimantName AS error_message, 
+					'No Way! Last name field must not be empty' AS detail
+				FROM dummy;
+	ELSE
+	
+		INSERT INTO "s0009272344trial.thrinke.ofac.data::model.claimant" VALUES("s0009272344trial.thrinke.ofac.data::claimant".NEXTVAL,
+		lv_LossNumber, lv_LossStatus, lv_ClaimantName, lv_CompanyCode, lv_BusinessArea, lv_ChangedBy, lv_ChangedOn, lv_ExportedOn );
+		
+	END IF;
+END;

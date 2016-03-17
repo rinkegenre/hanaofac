@@ -1,0 +1,1 @@
+call HCP.HCP_GRANT_ROLE_TO_USER('s0009272344trial.thrinke.ofac.roles::user','s0009272344')

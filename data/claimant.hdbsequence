@@ -1,0 +1,8 @@
+schema= "_SYS_BIC";
+start_with= 4;
+maxvalue= 1000000000;
+nomaxvalue=false;
+minvalue= 4;
+nominvalue=true;
+cycles= false;
+depends_on_table= "s0009272344trial.thrinke.ofac.data::model.claimant";

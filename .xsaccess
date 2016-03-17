@@ -1,0 +1,7 @@
+{
+ "exposed": true,
+ "authentication": [{
+ "method": "Basic"
+ }],
+ "authorization": ["s0009272344trial.thrinke.ofac::Basic"]
+}

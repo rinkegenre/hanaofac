@@ -1,0 +1,1 @@
+select "s0009272344trial.thrinke.ofac.data::claimant".NEXTVAL from DUMMY;

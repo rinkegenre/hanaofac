@@ -1,0 +1,47 @@
+namespace s0009272344trial.thrinke.ofac.data;
+
+@Schema: '_SYS_BIC'
+context model {
+
+type SString10: String(10);
+type SUserId: String(12);
+
+@Catalog.tableType: #COLUMN
+    Entity claimant {
+    key ID: String(10);
+    LOSSSTATUS: SString10;
+    CLAIMANTNAME: String(80);
+    COMPANYCODE: SString10;
+    BUSINESSAREA: SString10;
+    CHANGEDBY: SUserId;
+    CHANGEDON: UTCTimestamp;
+    EXPORTEDON: UTCTimestamp;
+    LOSSNUMBER: SString10;
+  };
+  
+  context procedures{
+    type claimant {
+    ID: String(10) ;
+    LOSSSTATUS: SString10;
+    CLAIMANTNAME: String(80);
+    COMPANYCODE: SString10;
+    BUSINESSAREA: SString10;
+    CHANGEDBY: SUserId;
+    CHANGEDON: UTCTimestamp;
+    EXPORTEDON: UTCTimestamp; 
+    LOSSNUMBER: SString10;
+    };
+    type errors {
+                HTTP_STATUS_CODE : Integer;
+                ERROR_MESSAGE : String(100);
+                DETAIL : String(100); };
+    }; 
+    
+    
+    context thtest{
+	    type mytable{
+	    	TESTID: Integer;
+	    	TESTSTRING: String(10);
+	    };
+	 };
+};

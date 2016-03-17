@@ -1,0 +1,5 @@
+service  { 
+"s0009272344trial.thrinke.ofac.data::model.claimant" as "claimants"
+create using "s0009272344trial.thrinke.ofac.procedures::createClaimant"
+update using "s0009272344trial.thrinke.ofac.procedures::updateClaimant";
+}

@@ -1,0 +1,11 @@
+role s0009272344trial.thrinke.ofac.roles::user {	 
+ 
+ application privilege: s0009272344trial.thrinke.ofac::Basic;
+ 
+ sql object s0009272344trial.thrinke.ofac.data::model.claimant: SELECT, INSERT, UPDATE, DELETE, ALTER;
+ sql object s0009272344trial.thrinke.ofac.procedures::createClaimant: EXECUTE, ALTER, DEBUG;
+ sql object s0009272344trial.thrinke.ofac.procedures::updateClaimant: EXECUTE, ALTER, DEBUG;
+ sql object s0009272344trial.thrinke.ofac.data:claimant.hdbsequence: SELECT;
+
+}
+

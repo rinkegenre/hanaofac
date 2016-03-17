@@ -1,0 +1,1 @@
+CALL "_SYS_BIC"."s0009272344trial.thrinke.ofac.procedures::createClaimantNT"(ClaimantName => 'claimant', LossNumber => '123' , error_detail => ?);
